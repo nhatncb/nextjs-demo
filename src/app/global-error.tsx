@@ -1,6 +1,7 @@
 'use client';
 
 import * as Sentry from '@sentry/nextjs';
+import { useEffect } from 'react';
 
 export default function GlobalError({
   error,
@@ -15,7 +16,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html>
+    <html lang="en">
       <body>
         <div className="flex h-screen w-full flex-col items-center justify-center gap-4">
           <h2 className="text-2xl font-bold">Something went wrong!</h2>

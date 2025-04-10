@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-interface Post {
+type Post = {
   id: number;
   title: string;
   content: string;
-}
+};
 
 // This is a demo of generateStaticParams
 export async function generateStaticParams() {
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
     { id: 3, title: 'Third Post', content: 'This is the third post content' },
   ];
 
-  return posts.map((post) => ({
+  return posts.map(post => ({
     id: post.id.toString(),
   }));
 }
@@ -29,13 +29,16 @@ async function getPost(id: string): Promise<Post> {
     { id: 3, title: 'Third Post', content: 'This is the third post content' },
   ];
 
-  const post = posts.find((p) => p.id.toString() === id);
-  if (!post) throw new Error('Post not found');
+  const post = posts.find(p => p.id.toString() === id);
+  if (!post) {
+    throw new Error('Post not found');
+  }
   return post;
 }
 
-export default async function PostPage({ params }: { params: { id: string } }) {
-  const post = await getPost(params.id);
+export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const post = await getPost(id);
 
   return (
     <div className="container py-8">

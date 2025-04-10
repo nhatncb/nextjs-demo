@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-interface Post {
+type Post = {
   id: number;
   title: string;
   content: string;
-}
+};
 
 async function getPosts(): Promise<Post[]> {
   // In a real app, this would fetch from an API or database
@@ -23,7 +23,7 @@ export default async function Home() {
     <main className="container py-8">
       <h1 className="text-4xl font-bold mb-8">Next.js Demo with Static Params</h1>
       <div className="grid gap-4">
-        {posts.map((post) => (
+        {posts.map(post => (
           <div
             key={post.id}
             className="p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow"

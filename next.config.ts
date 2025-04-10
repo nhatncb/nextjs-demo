@@ -1,11 +1,15 @@
-/** @type {import('next').NextConfig} */
+import type { NextConfig } from 'next';
 
-const { withSentryConfig } = require("@sentry/nextjs");
-
-const nextConfig = {
+const nextConfig: NextConfig = {
   // Your existing next config
+  output: 'standalone',
+  eslint: {
+    dirs: ['.'],
+  },
+  poweredByHeader: false,
+  reactStrictMode: true,
 };
-
+/*
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not
@@ -16,6 +20,6 @@ const sentryWebpackPluginOptions = {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
-
+*/
 // Make sure adding Sentry options is the last code to run before exporting
-module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
+export default nextConfig;

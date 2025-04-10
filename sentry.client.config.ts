@@ -1,8 +1,8 @@
-import * as Sentry from "@sentry/nextjs";
+import * as Sentry from '@sentry/nextjs';
 
 Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-  
+
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1.0,
 
@@ -16,11 +16,11 @@ Sentry.init({
   replaysSessionSampleRate: 0.1,
 
   // You can remove this option if you're not planning to use the Sentry Session Replay feature:
-  integrations: [
-    new Sentry.Replay({
-      // Additional Replay configuration goes here, for example:
-      maskAllText: true,
-      blockAllMedia: true,
-    }),
-  ],
+  // integrations: [
+  //   new Sentry.Replay({
+  //     // Additional Replay configuration goes here, for example:
+  //     maskAllText: true,
+  //     blockAllMedia: true,
+  //   }),
+  // ],
 });
