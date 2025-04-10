@@ -24,6 +24,7 @@ export default antfu({
     'migrations/**/*',
     'next-env.d.ts',
     'lint-staged.config.js',
+    '.github/**/*',
   ],
 }, jsxA11y.flatConfigs.recommended, {
   plugins: {
